@@ -33,8 +33,11 @@ export default class Main extends React.Component {
         };
     }
     updateState = (name) => {
-        this.state.list[name] += 1;
-        alert(this.state.list[name]);
+        let newList = this.state.list;
+        newList[name]++;
+        this.setState({
+            list: newList,
+        });
     };
     render() {
         return (
