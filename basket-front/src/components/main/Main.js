@@ -2,13 +2,38 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./Main.css";
 import Search from "./components/Search";
+import Basket from "./components/Basket";
+import Groceries from "./components/Groceries";
 export default class Main extends React.Component {
     render() {
+        let list = [
+            { Strawberry: 0 },
+            { Blueberry: 0 },
+            { Orange: 0 },
+            { Banana: 0 },
+            { Apple: 0 },
+            { Carrot: 0 },
+            { Celery: 0 },
+            { Mushroom: 0 },
+            { Green: 0 },
+            { Pepper: 0 },
+            { Eggs: 0 },
+            { Cheese: 0 },
+            { Butter: 0 },
+            { Chicken: 0 },
+            { Beef: 0 },
+            { Pork: 0 },
+            { Fish: 0 },
+            { Rice: 0 },
+            { Pasta: 0 },
+            { Bread: 0 },
+        ];
         return (
             <div className="main">
+                main
                 <Search />
-                <div className="groceries"> groceries</div>
-                <div className="basket"> basket</div>
+                <Basket type="basket" title="basket" />
+                <Groceries type="groceries" title="groceries" list={list} />
             </div>
         );
     }
