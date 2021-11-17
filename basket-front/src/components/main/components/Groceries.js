@@ -10,9 +10,9 @@ export default class Groceries extends React.Component {
             list: this.props.list || ["no elements"],
         };
     }
-    updateState(name) {
-        alert(name);
-    }
+    updateState = (name) => {
+        this.props.a(name);
+    };
     render() {
         return (
             <div className="groceries">
@@ -20,13 +20,9 @@ export default class Groceries extends React.Component {
                     <div className="title">
                         <h1>{this.props.title}</h1>
                     </div>
-                    {this.state.list.map((name) => {
-                        // Return the element. Also pass key
+                    {Object.keys(this.state.list).map((name) => {
                         return (
-                            <Item
-                                name={Object.keys(name)[0]}
-                                a={this.updateState}
-                            />
+                            <Item type="g" name={name} a={this.updateState} />
                         );
                     })}
                 </div>

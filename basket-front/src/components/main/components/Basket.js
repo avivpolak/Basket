@@ -21,11 +21,12 @@ export default class Basket extends React.Component {
                     <div className="title">
                         <h1>{this.props.title}</h1>
                     </div>
-                    {this.state.list.map((name) => {
+                    {Object.keys(this.state.list).map((name) => {
                         // Return the element. Also pass key
                         return (
                             <Item
-                                name={Object.keys(name)[0]}
+                                quantity={this.state.list[name]}
+                                name={name}
                                 a={this.updateState}
                             />
                         );

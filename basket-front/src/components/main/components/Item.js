@@ -9,6 +9,8 @@ export default class Item extends React.Component {
         this.props.a(this.props.name);
     };
     render() {
+        if (this.props.type !== "g" && !this.props.quantity) return <div></div>;
+
         return (
             <div onClick={this.handleClick} className="item">
                 {this.props.name}

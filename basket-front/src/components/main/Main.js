@@ -5,35 +5,48 @@ import Search from "./components/Search";
 import Basket from "./components/Basket";
 import Groceries from "./components/Groceries";
 export default class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            list: {
+                Strawberry: 0,
+                Blueberry: 0,
+                Orange: 0,
+                Banana: 0,
+                Apple: 0,
+                Carrot: 0,
+                Celery: 0,
+                Mushroom: 0,
+                Green: 0,
+                Pepper: 0,
+                Eggs: 0,
+                Cheese: 0,
+                Butter: 0,
+                Chicken: 0,
+                Beef: 0,
+                Pork: 0,
+                Fish: 0,
+                Rice: 0,
+                Pasta: 0,
+                Bread: 0,
+            },
+        };
+    }
+    updateState = (name) => {
+        this.state.list[name] += 1;
+        alert(this.state.list[name]);
+    };
     render() {
-        let list = [
-            { Strawberry: 0 },
-            { Blueberry: 0 },
-            { Orange: 0 },
-            { Banana: 0 },
-            { Apple: 0 },
-            { Carrot: 0 },
-            { Celery: 0 },
-            { Mushroom: 0 },
-            { Green: 0 },
-            { Pepper: 0 },
-            { Eggs: 0 },
-            { Cheese: 0 },
-            { Butter: 0 },
-            { Chicken: 0 },
-            { Beef: 0 },
-            { Pork: 0 },
-            { Fish: 0 },
-            { Rice: 0 },
-            { Pasta: 0 },
-            { Bread: 0 },
-        ];
         return (
             <div className="main">
-                main
                 <Search />
-                <Basket type="basket" title="basket" />
-                <Groceries type="groceries" title="groceries" list={list} />
+                <Basket type="basket" title="basket" list={this.state.list} />
+                <Groceries
+                    type="groceries"
+                    title="groceries"
+                    list={this.state.list}
+                    a={this.updateState}
+                />
             </div>
         );
     }
