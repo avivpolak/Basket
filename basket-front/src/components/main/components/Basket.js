@@ -11,9 +11,12 @@ export default class Basket extends React.Component {
         };
     }
 
-    updateState() {
-        alert("hel33lo");
-    }
+    removeFromBasket = (name) => {
+        this.props.removeFromBasket(name);
+    };
+    toggleChacked = (name) => {
+        this.props.toggleChacked(name);
+    };
     render() {
         return (
             <div className="basket">
@@ -21,13 +24,14 @@ export default class Basket extends React.Component {
                     <div className="title">
                         <h1>{this.props.title}</h1>
                     </div>
-                    {Object.keys(this.state.list).map((name) => {
-                        // Return the element. Also pass key
+                    {Object.keys(this.state.list).map((name, i) => {
                         return (
                             <Item
-                                quantity={this.state.list[name]}
+                                quantity={this.state.list[name].quantity}
                                 name={name}
-                                a={this.updateState}
+                                removeFromBasket={this.removeFromBasket}
+                                toggleChacked={this.toggleChacked}
+                                chacked={this.state.list[name].chacked}
                             />
                         );
                     })}

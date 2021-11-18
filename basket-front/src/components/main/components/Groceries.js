@@ -7,11 +7,11 @@ export default class Groceries extends React.Component {
         super(props);
         // Set initial state
         this.state = {
-            list: this.props.list || ["no elements"],
+            groceries: this.props.groceries || ["no elements"],
         };
     }
     updateState = (name) => {
-        this.props.a(name);
+        this.props.addToBasket(name);
     };
     render() {
         return (
@@ -20,9 +20,13 @@ export default class Groceries extends React.Component {
                     <div className="title">
                         <h1>{this.props.title}</h1>
                     </div>
-                    {Object.keys(this.state.list).map((name) => {
+                    {this.state.groceries.map((name) => {
                         return (
-                            <Item type="g" name={name} a={this.updateState} />
+                            <Item
+                                type="groceries"
+                                name={name}
+                                a={this.updateState}
+                            />
                         );
                     })}
                 </div>

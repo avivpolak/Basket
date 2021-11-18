@@ -8,47 +8,95 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: {
-                Strawberry: 0,
-                Blueberry: 0,
-                Orange: 0,
-                Banana: 0,
-                Apple: 0,
-                Carrot: 0,
-                Celery: 0,
-                Mushroom: 0,
-                Green: 0,
-                Pepper: 0,
-                Eggs: 0,
-                Cheese: 0,
-                Butter: 0,
-                Chicken: 0,
-                Beef: 0,
-                Pork: 0,
-                Fish: 0,
-                Rice: 0,
-                Pasta: 0,
-                Bread: 0,
+            basket: {
+                Strawberry: { quantity: 0, chacked: false },
+                Blueberry: { quantity: 0, chacked: false },
+                Orange: { quantity: 0, chacked: false },
+                Banana: { quantity: 0, chacked: false },
+                Apple: { quantity: 0, chacked: false },
+                Carrot: { quantity: 0, chacked: false },
+                Celery: { quantity: 0, chacked: false },
+                Mushroom: { quantity: 0, chacked: false },
+                Green: { quantity: 0, chacked: false },
+                Pepper: { quantity: 0, chacked: false },
+                Eggs: { quantity: 0, chacked: false },
+                Cheese: { quantity: 0, chacked: false },
+                Butter: { quantity: 0, chacked: false },
+                Chicken: { quantity: 0, chacked: false },
+                Beef: { quantity: 0, chacked: false },
+                Pork: { quantity: 0, chacked: false },
+                Fish: { quantity: 0, chacked: false },
+                Rice: { quantity: 0, chacked: false },
+                Pasta: { quantity: 0, chacked: false },
+                Bread: { quantity: 0, chacked: false },
             },
+
+            groceries: [
+                "Strawberry",
+                "Blueberry",
+                "Orange",
+                "Banana",
+                "Apple",
+                "Carrot",
+                "Celery",
+                "Mushroom",
+                "Green",
+                "Pepper",
+                "Eggs",
+                "Cheese",
+                "Butter",
+                "Chicken",
+                "Beef",
+                "Pork",
+                "Fish",
+                "Rice",
+                "Pasta",
+                "Bread",
+            ],
         };
     }
-    updateState = (name) => {
-        let newList = this.state.list;
-        newList[name]++;
+    addToBasket = (name) => {
+        let newList = this.state.basket;
+        newList[name].quantity++;
         this.setState({
-            list: newList,
+            basket: newList,
+        });
+    };
+    removeFromBasket = (name) => {
+        let newList = this.state.basket;
+        newList[name].quantity--;
+        this.setState({
+            basket: newList,
+        });
+    };
+    toggleChacked = (name) => {
+        let newList = this.state.basket;
+        if (this.state.basket[name].chacked) {
+            newList[name].chacked = false;
+        } else {
+            newList[name].chacked = true;
+        }
+
+        this.setState({
+            basket: newList,
         });
     };
     render() {
         return (
             <div className="main">
                 <Search />
-                <Basket type="basket" title="basket" list={this.state.list} />
+                <Basket
+                    type="basket"
+                    title="basket"
+                    list={this.state.basket}
+                    removeFromBasket={this.removeFromBasket}
+                    toggleChacked={this.toggleChacked}
+                />
                 <Groceries
                     type="groceries"
                     title="groceries"
-                    list={this.state.list}
-                    a={this.updateState}
+                    groceries={this.state.groceries}
+                    addToBasket={this.addToBasket}
                 />
             </div>
         );
