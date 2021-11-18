@@ -1,0 +1,36 @@
+.app {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.header {
+    grid-area: 1 / 1 / 2 / 6;
+    background-color: indianred;
+}
+.main {
+    grid-area: 2 / 1 / 5 / 6;
+}
+.footer {
+    grid-area: 5 / 1 / 6 / 6;
+    background-color: indianred;
+}
+.search-bar {
+    background-color: rgb(82, 82, 82);
+}
+.groceries,
+.basket {
+    background-color: rgba(205, 92, 92, 0.398);
+}
+.logo img {
+    height: 100px;
+}
+/* div {
+    border: 5px;
+    border-style: solid;
+    border-color: red;
+    margin: 10px;
+    padding: 10px;
+} */
