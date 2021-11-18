@@ -7,12 +7,11 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className="header">
-                header
                 <div className="logo">
                     <img src={basket} className="App-logo" alt="logo" />
                 </div>
                 <div className="slogen">
-                    <h1>your very best ui </h1>
+                    <h1>Basket App</h1>
                 </div>
             </div>
         );
